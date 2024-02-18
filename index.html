@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HomePage</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="icon" type="image/x-icon" href="https://mnstrd.co/common/assets/favicons/favicon.ico">
+	<link rel="icon" type="image/webp" sizes="16x16" href="https://mnstrd.co/common/assets/favicons/favicon-16x16.webp">
+	<link rel="icon" type="image/webp" sizes="32x32" href="https://mnstrd.co/common/assets/favicons/favicon-32x32.webp">
+	<link rel="icon" type="image/webp" sizes="48x48" href="https://mnstrd.co/common/assets/favicons/favicon-48x48.webp">
+	<link rel="manifest" href="https://mnstrd.co/common/assets/favicons/manifest.webmanifest" crossorigin>
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#041A15">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#041A15">
+	<meta name="application-name" content="Mansa.Trade token upgrade">
+	<link rel="apple-touch-icon" href="https://mnstrd.co/common/assets/favicons/apple-touch-icon.webp">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="Staking Mansa.Trade">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com?_v=20240218161623"></script>
+	<script>
+		// Установка конфигурации Tailwind CSS
+		window.tailwind = {
+
+			config: {
+				darkMode: 'class',
+				theme: {
+					screens: {
+						'sm': '29.99875em',
+						'md': '47.99875em',
+						'lg': '61.99875em',
+						'xl': '1280px',
+						'2xl': '71.875em',
+					},
+					fontSize: {
+						xs: '.875rem',
+						sm: '.9375rem',
+						base: '1rem',
+						lg: '1.125rem',
+						xl: '1.25rem',
+						'2xl': '1.75rem',
+						'3xl': '2.5rem',
+						'4xl': '2.25rem',
+						'5xl': '3.25rem',
+					},
+					extend: {
+						colors: {
+							// Определение цветов для темной темы
+							green: '#16f195',
+							'dark-text': '#131212',
+							purple: '#9a45ff',
+							dark: {
+								bg: '#040605',
+								black: '#000000',
+								'dark-text': '#131212',
+								'footer-bg': '#141414',
+								'footer-stroke': '#262626',
+								'footer-text': '#ffffff',
+								'gray-stroke': '#202221',
+								green: '#16f195',
+								'input-fill': '#26282c',
+								'light-stroke': '#2d2e2e',
+								purple: '#a953fe',
+								'switcher-text': '#010101',
+								'text-dark-gray': '#9e9e9e',
+								'text-gray': '#cecfcf',
+								'text-light': '#d8fdeb',
+								white: '#ffffff',
+							},
+							// Определение цветов для светлой темы
+							light: {
+								bg: '#e4ece7',
+								black: '#000000',
+								'dark-text': '#131212',
+								'footer-bg': '#141414',
+								'footer-stroke': '#262626',
+								'footer-text': '#ffffff',
+								'gray-stroke': '#e0e6e0',
+								green: '#0ee78c',
+								'input-fill': '#ffffff',
+								'light-stroke': '#e9e9e9',
+								purple: '#9a45ff',
+								'switcher-text': '#ffffff',
+								'text-dark-gray': '#151515',
+								'text-gray': '#4c4e4d',
+								'text-light': '#2f4b3e',
+								white: '#fff',
+							},
+						},
+					},
+				},
+			},
+		};
+	</script>
+	<style type="text/tailwindcss">
+		@layer utilities {
+      .menu__link {
+      
+        @apply dark:text-dark-white text-light-black dark:hover:text-green hover:text-green;
+      }
+      .button-gray {
+        @apply inline-flex gap-2 items-center dark:text-dark-green dark:border-dark-green text-light-text-gray border-light-text-gray hover:text-dark-black hover:border-transparent dark:hover:text-dark-black;
+        
+      }
+      .button-green {
+        @apply inline-flex gap-2 items-center justify-center text-dark-text bg-green !border-green hover:-translate-y-1;
+        
+      }
+    
+      .button-gray::before {
+        @apply hover:text-light-black;
+      }
+      
+      [data-ripple].button-gray .circle {
+        @apply bg-dark-green;
+      }
+      .ThemeToggle {
+        @apply dark:bg-dark-bg dark:border-dark-bg bg-light-bg border-light-bg;
+        
+        &::before {
+          @apply  bg-light-bg;
+        }
+      }
+      .tariffs__tariff {
+        @apply p-5 rounded-xl border-2 border-solid border-transparent transition-colors cursor-pointer;
+      }
+      .why-us .card {
+        
+        backdrop-filter: blur(10px);
+       
+        @apply rounded-[1.25rem] p-6;
+      }
+      :not(.dark) .why-us .card{
+        background: linear-gradient(180.00deg, rgba(255, 255, 255, 0.7),rgba(250, 250, 250, 0.6) 100%);
+      }
+      .dark .why-us .card {
+        background: linear-gradient(180.00deg, rgba(23, 23, 23, 0.7),rgba(20, 20, 20, 0.7) 100%);
+      }
+      .why-us .card h6 {
+        @apply dark:text-dark-white text-light-black text-lg leading-6 mt-5 mb-2 font-medium;
+      }
+      .why-us .card p {
+        @apply dark:text-dark-text-gray text-light-text-gray text-base leading-5;
+      }
+
+      .spollers__item {
+        @apply  rounded-xl mb-2 list-none ;
+        
+      }
+      :not(.dark ).spollers__item {
+        border: .0625rem solid rgb(224, 230, 224);
+        background: linear-gradient(180.00deg, rgba(255, 255, 255, 0.7),rgba(250, 250, 250, 0.6) 100%);
+      }
+      .dark .spollers__item {
+        border: .0625rem solid rgb(32, 34, 33);
+        background: linear-gradient(180.00deg, rgba(23, 23, 23, 0.7),rgba(20, 20, 20, 0.7) 100%);
+      }
+      .spollers__item summary{
+        @apply dark:text-dark-white text-light-black text-lg list-none px-4 py-5 relative flex justify-between gap-3 items-center cursor-pointer;
+      }
+      .spollers__item div{
+        @apply dark:text-dark-text-gray text-light-text-gray text-base list-none px-4 py-5 pt-0 flex flex-col gap-2;
+      }
+      :not(.dark ).banner-block {
+        background: radial-gradient(50.00% 100.00% at 50% 0%,rgb(239, 234, 246),rgb(247, 246, 248) 100%);
+      }
+      .dark .banner-block {
+        background: radial-gradient(50.00% 100.00% at 50% 0%,rgb(32, 23, 43),rgb(17, 12, 23) 100%);
+      }
+      ul {
+        @apply list-disc pl-5;
+      }
+    }
+  </style>
+	<link rel="stylesheet" href="css/style.min.css?_v=20240218161623">
+</head>
+
+
+<body class="dark:bg-dark-bg bg-light-bg transition-colors">
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="lg:grid flex lg:grid-cols-3 items-center gap-4 justify-between ">
+					<a href="#" class="header__logo dark:text-dark-white text-light-black">
+						<div class="light">
+							<!-- <img src="https://mnstrd.co/common/asseimg/logo-light-mansa.trade.svg" alt="Logo"> -->
+							<img src="img/logo.svg" alt="Logo">
+						</div>
+						<div class="dark">
+							<!-- <img src="https://mnstrd.co/common/asseimg/logo-mansa.trade.svg" alt="Logo"> -->
+							<img src="img/logo-light.svg" alt="Logo">
+						</div>
+						<span>STAKING</span>
+					</a>
+					<div class="header__menu menu">
+						<nav class="flex justify-center items-center lg:flex-row flex-col lg:h-auto h-full">
+							<ul class="flex items-center flex-wrap lg:gap-x-8 lg:gap-y-4 gap-y-7 lg:flex-row flex-col list-none">
+								<li>
+									<a href="#" class="menu__link" data-goto=".tariffs">
+										Тарифы
+									</a>
+								</li>
+								<li>
+									<a href="#" class="menu__link" data-goto=".calculator">
+										Калькулятор
+									</a>
+								</li>
+								<li>
+									<a href="#" class="menu__link" data-goto=".why-us">
+										Преимущество
+									</a>
+								</li>
+								<li>
+									<a href="#" class="menu__link" data-goto=".faq">
+										FAQ
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="flex items-center gap-4">
+						<div class="header__actions flex items-center gap-4 md:justify-end md:flex-1 relative z-[5]" data-da=".header__menu, 767.98, last">
+							<div class="language">
+								<a href="#" class="language-button _icon-globe dark:text-dark-white text-light-black">
+									RU
+								</a>
+							</div>
+							<div>
+								<input id="themeSwitcher" class="ThemeToggle toggler" type="checkbox">
+							</div>
+							<a href="#" class="button button-gray button-connect min-w-40" data-ripple>
+								<span class="circle"></span>
+								<span class="button__text _icon-wallet">
+									Connect wallet
+								</span>
+							</a>
+
+						</div>
+						<button type="button" class="menu__icon icon-menu"><span></span></button>
+					</div>
+
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="hero flex items-center justify-center py-28 relative">
+				<div class="hero__container">
+					<div class="flex flex-col items-center text-center">
+						<h1 class="font-bold md:text-5xl text-4xl leading-tight dark:text-dark-white text-light-black mb-5">
+							Стейкайте токен MansaTrade и увеличивайте свою прибыль
+						</h1>
+						<p class="dark:text-dark-text-gray text-light-text-light text-lg leading-tight mb-8">
+							Доходность до 8% годовых, эксклюзивный доступ к новым функциям платформы и много другое
+						</p>
+						<a href="#" class="button button-green md:min-w-[11.875rem] min-w-[15rem]">
+							Купить MNS
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- /.hero -->
+			<section class="features py-10">
+				<div class="features__container">
+					<div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-5 gap-4">
+						<div class="features__card transition-colors card">
+							<div class="card__body">
+								<div class="card__icon">
+									<img src="img/features/illustration.svg" alt="Icon">
+								</div>
+								<div class="card__text">
+									<div class="dark:text-dark-text-light md:text-xs text-base text-center">
+										<p>
+											Всего 25 000 000 монет
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="features__card transition-colors card">
+							<div class="card__body">
+								<div class="card__icon">
+									<img src="img/features/illustration (1).svg" alt="Icon">
+								</div>
+								<div class="card__text">
+									<div class="dark:text-dark-text-light md:text-xs text-base text-center">
+										<p>
+											Скидки и бонусы для владельцев токенов
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="features__card transition-colors card">
+							<div class="card__body">
+								<div class="card__icon">
+									<img src="img/features/illustration (2).svg" alt="Icon">
+								</div>
+								<div class="card__text">
+									<div class="dark:text-dark-text-light md:text-xs text-base text-center">
+										<p>
+											Доступ к новым функциям платформы
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="features__card transition-colors card">
+							<div class="card__body">
+								<div class="card__icon">
+									<img src="img/features/illustration (3).svg" alt="Icon">
+								</div>
+								<div class="card__text">
+									<div class="dark:text-dark-text-light md:text-xs text-base text-center">
+										<p>
+											Полный контроль <br> над активами
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.features -->
+			<section class="about-token md:py-28 py-24 relative">
+				<div class="about-token__container">
+					<div class="flex md:flex-row flex-col items-center gap-4">
+						<div class="about-token__text flex-1">
+							<h2 class="dark:text-dark-white text-light-black md:text-3xl text-2xl h2 mb-7">
+								MansaTrade — надежный токен с высоким уровнем доходности
+							</h2>
+							<div class="text-base dark:text-dark-text-gray text-light-text-gray leading-6">
+								<p>
+									Участвуйте в управлении сетью Mansa Trade —  храните уникальную цифровую валюту MNS и зарабатывайте от 3% до 8% годовых. Владельцы токенов получают дополнительные привилегии:
+								</p>
+								<ul>
+									<li>Доступ к NFT и другим активам платформы.</li>
+									<li>Возможность влиять на развитие блокчейн-сети.</li>
+									<li>Скидки и оплата комиссии токенами.</li>
+									<li>Доступ к эксклюзивным опциям Mansa Trade.</li>
+								</ul>
+								<p>
+									Стейкинг токенов MansaTrade помогает поддерживать работу блокчейна и развивать проект, увеличивая итоговую стоимость монет. Всего выпущено 25 000 000 монет — в ближайшие года планируется увеличить их стоимость.
+								</p>
+							</div>
+						</div>
+						<div class="about-token__image lg:flex-[0_1_33.75rem] md:flex-1 md:-mr-[10%]">
+							<img src="img/about-token/image.png" alt="image">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.about-token -->
+			<section class="tariffs md:py-28 py-20" data-watch data-watch-once>
+				<div class="tariffs__container">
+					<div class="text-center mb-9">
+						<h2 class="dark:text-dark-white text-light-black md:text-3xl text-2xl h2 mb-6 text-center md:max-w-[80%] mx-auto">
+							6 тарифов на выбор: для новичков, продвинутых и настоящих экспертов
+						</h2>
+						<p class="dark:text-dark-text-gray text-light-text-gray text-lg leading-6">
+
+							Выберите оптимальный тариф и застейкайте активы, чтобы получать максимальную прибыль.
+						</p>
+					</div>
+					<div data-tabs class="tabs flex items-center flex-col mb-16">
+						<nav data-tabs-titles class="tabs__navigation inline-flex items-center gap-1 p-1.5 rounded-full">
+							<button type="button" class="tabs__title _tab-active _icon-mns">
+
+								Stake MNS
+							</button>
+							<button type="button" class="tabs__title _icon-solana" disabled>
+
+								Stake SOL
+							</button>
+						</nav>
+						<div data-tabs-body class="w-full mt-10">
+							<div>
+								<div class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-2">
+									<div class="options__item">
+										<input id="o_1" type="radio" value="1" name="option">
+										<label for="o_1">
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__counter mb-4">
+													<p>
+														<span class="text-4xl" data-digits-counter>
+															2
+
+														</span>
+														года
+													</p>
+												</div>
+												<div class="tariff__profitability">
+													<p>
+														Доходность:
+
+													</p>
+													<b>
+														8% годовых
+													</b>
+												</div>
+											</div>
+										</label>
+									</div>
+									<div class="options__item">
+										<input id="o_2" type="radio" value="2" name="option">
+										<label for="o_2">
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__body">
+													<div class="tariff__counter mb-4">
+														<p>
+															<span class="text-4xl" data-digits-counter>
+																1
+
+															</span>
+															год
+														</p>
+													</div>
+													<div class="tariff__profitability">
+														<p>
+															Доходность:
+
+														</p>
+														<b>
+															6% годовых
+														</b>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+									<div class="options__item">
+										<input id="o_3" type="radio" value="2" name="option">
+										<label for="o_3">
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__body">
+													<div class="tariff__counter mb-4">
+														<p>
+															<span class="text-4xl" data-digits-counter>
+																270
+
+															</span>
+															дней
+														</p>
+													</div>
+													<div class="tariff__profitability">
+														<p>
+															Доходность:
+
+														</p>
+														<b>
+															5% годовых
+														</b>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+									<div class="options__item">
+										<input id="o_4" type="radio" value="2" name="option">
+										<label for="o_4">
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__body">
+													<div class="tariff__counter mb-4">
+														<p>
+															<span class="text-4xl" data-digits-counter>
+																180
+
+															</span>
+															дней
+														</p>
+													</div>
+													<div class="tariff__profitability">
+														<p>
+															Доходность:
+
+														</p>
+														<b>
+															4.5% годовых
+														</b>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+									<div class="options__item">
+										<input id="o_5" type="radio" value="2" name="option">
+										<label for="o_5">
+
+
+
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__body">
+													<div class="tariff__counter mb-4">
+														<p>
+															<span class="text-4xl" data-digits-counter>
+																90
+
+															</span>
+															дней
+														</p>
+													</div>
+													<div class="tariff__profitability">
+														<p>
+															Доходность:
+
+														</p>
+														<b>
+															4% годовых
+														</b>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+									<div class="options__item">
+										<input id="o_6" type="radio" value="2" name="option">
+										<label for="o_6">
+											<div class="tariffs__tariff tariff">
+												<div class="tariff__body">
+													<div class="tariff__counter mb-4">
+														<p>
+															<span class="text-4xl" data-digits-counter>
+																30
+
+															</span>
+															дней
+														</p>
+													</div>
+													<div class="tariff__profitability">
+														<p>
+															Доходность:
+
+														</p>
+														<b>
+															3% годовых
+														</b>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+
+
+
+
+
+								</div>
+							</div>
+							<div>
+								Вміст другого таба
+							</div>
+						</div>
+					</div>
+					<div class="tariffs-check">
+						<div class="tariffs-check__block">
+							<input autocomplete="off" type="text" name="form[]" placeholder="Введите суму стейкинга" class="input input-stacking">
+							<button type="button" class="button button-green">Подключить кошелек</button>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.tariffs -->
+			<section class="calculator md:py-20 py-10">
+				<div class="calculator__container">
+					<div class="calculator__block rounded-3xl sm:px-10 px-4 py-10">
+						<h2 class="dark:text-dark-white text-light-black md:text-3xl text-2xl h2 text-center mb-12">
+							Рассчитайте будущую прибыль
+						</h2>
+						<div class="flex md:items-center gap-x-5 gap-y-4 md:flex-row flex-col">
+							<div class="grid grid-cols-2 gap-0.5 w-full">
+								<div>
+									<label for="#countStaking" max="21551000" class="dark:text-dark-white text-light-black block mb-1 font-semibold md:text-[.6875rem] text-[.5625rem] leading-4 uppercase">Количество токенов MNS</label>
+									<input autocomplete="off" type="text" id="countStaking" name="countStaking" placeholder="Value" value="100" class="input">
+								</div>
+								<div>
+									<label for="#deadlineStaking" class="dark:text-dark-white text-light-black block mb-1 font-semibold md:text-[.6875rem] text-[.5625rem] leading-4 uppercase">Срок стейкинга</label>
+									<select name="form[]" data-class-modif="form">
+										<option value="730" selected data-asset="года">2</option>
+										<option value="365" data-asset="год">1</option>
+										<option value="270" data-asset="дней">270</option>
+										<option value="180" data-asset="дней">180</option>
+										<option value="90" data-asset="дней">90</option>
+										<option value="30" data-asset="дней">30</option>
+									</select>
+								</div>
+							</div>
+							<div>
+								<label class="dark:text-dark-white text-light-black block mb-1 font-semibold md:text-[.6875rem] text-[.5625rem] leading-4 uppercase">Результат</label>
+								<div id="result" class="dark:text-dark-white text-light-black font-medium gap-3 text-2xl lg:min-w-80 md:min-w-60 min-w-full bg-purple px-3 py-2 min-h-[3.75rem] rounded-xl flex items-center">
+									<span>
+										132
+									</span>
+									<i class="_icon-mns text-xl"></i>
+									MNS
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.calculator -->
+			<section class="why-us md:py-28 py-20 relative">
+				<div class="why-us__container">
+					<h2 class="dark:text-dark-white text-light-black md:text-3xl lg:max-w-[58%] md:max-w-[36rem] sm:max-w-[30rem] mx-auto text-2xl h2 text-center md:mb-16 mb-12">
+						6 причин стейкать криптовалюту с Mansa Trade
+					</h2>
+					<div class="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-3">
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#46C3EA" fill-opacity="0.15" />
+								<path d="M29 21C29 22.1046 26.5376 23 23.5 23C20.4624 23 18 22.1046 18 21M29 21C29 19.8954 26.5376 19 23.5 19C20.4624 19 18 19.8954 18 21M29 21V25.4571C27.7785 25.824 27 26.3789 27 27M18 21V33C18 34.1046 20.4624 35 23.5 35C24.8296 35 26.0491 34.8284 27 34.5429V27M18 25C18 26.1046 20.4624 27 23.5 27C24.8296 27 26.0491 26.8284 27 26.5429M18 29C18 30.1046 20.4624 31 23.5 31C24.8296 31 26.0491 30.8284 27 30.5429M38 27C38 28.1046 35.5376 29 32.5 29C29.4624 29 27 28.1046 27 27M38 27C38 25.8954 35.5376 25 32.5 25C29.4624 25 27 25.8954 27 27M38 27V35C38 36.1046 35.5376 37 32.5 37C29.4624 37 27 36.1046 27 35V27M38 31C38 32.1046 35.5376 33 32.5 33C29.4624 33 27 32.1046 27 31" stroke="#46C3EA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									Высокая доходность
+								</h6>
+								<p>
+									Процентная ставка составляет от 3% до 8% годовых — начните стейкать и получайте повышенный пассивный доход.
+								</p>
+							</div>
+						</div>
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#DCC24B" fill-opacity="0.15" />
+								<path d="M31 18V19.4C31 19.9601 31 20.2401 30.891 20.454C30.7951 20.6422 30.6422 20.7951 30.454 20.891C30.2401 21 29.9601 21 29.4 21H26.6C26.0399 21 25.7599 21 25.546 20.891C25.3578 20.7951 25.2049 20.6422 25.109 20.454C25 20.2401 25 19.9601 25 19.4V18M24.2 38H31.8C32.9201 38 33.4802 38 33.908 37.782C34.2843 37.5903 34.5903 37.2843 34.782 36.908C35 36.4802 35 35.9201 35 34.8V21.2C35 20.0799 35 19.5198 34.782 19.092C34.5903 18.7157 34.2843 18.4097 33.908 18.218C33.4802 18 32.9201 18 31.8 18H24.2C23.0799 18 22.5198 18 22.092 18.218C21.7157 18.4097 21.4097 18.7157 21.218 19.092C21 19.5198 21 20.0799 21 21.2V34.8C21 35.9201 21 36.4802 21.218 36.908C21.4097 37.2843 21.7157 37.5903 22.092 37.782C22.5198 38 23.0799 38 24.2 38Z" stroke="#DCC24B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									Мобильное приложение
+								</h6>
+								<p>
+									Проводите транзакции, управляйте активами прямо со смартфона. Подключите криптокошелек и отслеживайте операции с помощью системы уведомлений
+								</p>
+							</div>
+						</div>
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#7E5EFF" fill-opacity="0.15" />
+								<path d="M25 27.5L27 29.5L31.5 25M36 28C36 32.9084 30.646 36.4784 28.698 37.6149C28.4766 37.744 28.3659 37.8086 28.2097 37.8421C28.0884 37.8681 27.9116 37.8681 27.7903 37.8421C27.6341 37.8086 27.5234 37.744 27.302 37.6149C25.354 36.4784 20 32.9084 20 28V23.2176C20 22.4181 20 22.0183 20.1308 21.6747C20.2463 21.3711 20.434 21.1003 20.6777 20.8855C20.9535 20.6424 21.3278 20.5021 22.0764 20.2213L27.4382 18.2107C27.6461 18.1327 27.75 18.0937 27.857 18.0783C27.9518 18.0646 28.0482 18.0646 28.143 18.0783C28.25 18.0937 28.3539 18.1327 28.5618 18.2107L33.9236 20.2213C34.6722 20.5021 35.0465 20.6424 35.3223 20.8855C35.566 21.1003 35.7537 21.3711 35.8692 21.6747C36 22.0183 36 22.4181 36 23.2176V28Z" stroke="#7E5EFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									Безопасность
+								</h6>
+								<p>
+									Только владелец токенов имеет право на их возврат, что исключает возможность несанкционированного доступа и обеспечивает безопасное управление цифровыми активами.
+								</p>
+							</div>
+						</div>
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#3ED182" fill-opacity="0.15" />
+								<path d="M18.4995 25H37.4995M25.9995 19L23.9995 25L27.9995 36.5L31.9995 25L29.9995 19M28.6141 36.2625L37.5727 25.5121C37.7246 25.33 37.8005 25.2389 37.8295 25.1372C37.8551 25.0475 37.8551 24.9525 37.8295 24.8628C37.8005 24.7611 37.7246 24.67 37.5727 24.4879L33.2394 19.2879C33.1512 19.182 33.1072 19.1291 33.0531 19.0911C33.0052 19.0574 32.9518 19.0324 32.8953 19.0172C32.8314 19 32.7626 19 32.6248 19H23.3742C23.2365 19 23.1676 19 23.1038 19.0172C23.0473 19.0324 22.9938 19.0574 22.946 19.0911C22.8919 19.1291 22.8478 19.182 22.7597 19.2879L18.4263 24.4879C18.2745 24.67 18.1986 24.7611 18.1696 24.8628C18.144 24.9525 18.144 25.0475 18.1696 25.1372C18.1986 25.2389 18.2745 25.33 18.4263 25.5121L27.385 36.2625C27.596 36.5158 27.7015 36.6424 27.8279 36.6886C27.9387 36.7291 28.0603 36.7291 28.1712 36.6886C28.2975 36.6424 28.4031 36.5158 28.6141 36.2625Z" stroke="#3ED182" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									Множество бонусов
+								</h6>
+								<p>
+									Возможность участия в развитии платформы Mansa Trade, скидки и акции для владельцев токенов, быстрый и безопасный вывод средств на карту или кошелек.
+								</p>
+							</div>
+						</div>
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#DB5394" fill-opacity="0.15" />
+								<path d="M28 25L20.0639 30.1585C19.376 30.6056 19.0321 30.8291 18.913 31.1126C18.8089 31.3604 18.8089 31.6396 18.913 31.8874M28 25L35.9361 30.1585C36.624 30.6056 36.9679 30.8291 37.087 31.1126C37.1911 31.3604 37.1911 31.6396 37.087 31.8874M28 25V18.5M28 31L20.0639 25.8415C19.376 25.3944 19.0321 25.1709 18.913 24.8874C18.8089 24.6396 18.8089 24.3604 18.913 24.1126M28 31L35.9361 25.8415C36.624 25.3944 36.9679 25.1709 37.087 24.8874C37.1911 24.6396 37.1911 24.3604 37.087 24.1126M28 31V37.5M37.272 31.9732L28.872 37.4332C28.5564 37.6384 28.3985 37.7409 28.2285 37.7809C28.0782 37.8161 27.9218 37.8161 27.7715 37.7809C27.6015 37.7409 27.4436 37.6384 27.128 37.4332L18.728 31.9732C18.462 31.8003 18.329 31.7139 18.2326 31.5985C18.1473 31.4965 18.0833 31.3784 18.0442 31.2512C18 31.1076 18 30.949 18 30.6317V25.3683C18 25.051 18 24.8924 18.0442 24.7488C18.0833 24.6216 18.1473 24.5035 18.2326 24.4015C18.329 24.2861 18.462 24.1997 18.728 24.0268L27.128 18.5668C27.4436 18.3616 27.6015 18.2591 27.7715 18.2191C27.9218 18.1839 28.0782 18.1839 28.2285 18.2191C28.3985 18.2591 28.5564 18.3616 28.872 18.5668L37.272 24.0268C37.538 24.1997 37.671 24.2861 37.7674 24.4015C37.8527 24.5035 37.9167 24.6216 37.9558 24.7488C38 24.8924 38 25.051 38 25.3683V30.6317C38 30.949 38 31.1076 37.9558 31.2512C37.9167 31.3784 37.8527 31.4965 37.7674 31.5985C37.671 31.7139 37.538 31.8003 37.272 31.9732Z" stroke="#DB5394" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									5 сетей блокчейна
+								</h6>
+								<p>
+									Платформа Mansa Trade поддерживает операции в сетях Solana, Ethereum, Polygon, Binance Smart Chain (BNB), Avalanche
+								</p>
+							</div>
+						</div>
+						<div class="card">
+							<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+								<rect width="56" height="56" rx="10" fill="#F67C38" fill-opacity="0.15" />
+								<path d="M22.0944 27.2288C22.0322 26.8282 22 26.4179 22 26C22 21.5817 25.6052 18 30.0526 18C34.4999 18 38.1052 21.5817 38.1052 26C38.1052 26.9981 37.9213 27.9535 37.5852 28.8345C37.5154 29.0175 37.4804 29.109 37.4646 29.1804C37.4489 29.2512 37.4428 29.301 37.4411 29.3735C37.4394 29.4466 37.4493 29.5272 37.4692 29.6883L37.8717 32.9585C37.9153 33.3125 37.9371 33.4895 37.8782 33.6182C37.8266 33.731 37.735 33.8205 37.6211 33.8695C37.4911 33.9254 37.3146 33.8995 36.9617 33.8478L33.7765 33.3809C33.6101 33.3565 33.527 33.3443 33.4512 33.3448C33.3763 33.3452 33.3245 33.3507 33.2511 33.3661C33.177 33.3817 33.0823 33.4172 32.893 33.4881C32.0097 33.819 31.0524 34 30.0526 34C29.6344 34 29.2237 33.9683 28.8227 33.9073M23.6316 38C26.5965 38 29 35.5376 29 32.5C29 29.4624 26.5965 27 23.6316 27C20.6667 27 18.2632 29.4624 18.2632 32.5C18.2632 33.1106 18.3603 33.6979 18.5395 34.2467C18.6153 34.4787 18.6532 34.5947 18.6657 34.6739C18.6786 34.7567 18.6809 34.8031 18.6761 34.8867C18.6714 34.9668 18.6514 35.0573 18.6113 35.2383L18 38L20.9948 37.591C21.1583 37.5687 21.24 37.5575 21.3114 37.558C21.3865 37.5585 21.4264 37.5626 21.5001 37.5773C21.5701 37.5912 21.6742 37.6279 21.8823 37.7014C22.4306 37.8949 23.0191 38 23.6316 38Z" stroke="#F67C38" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<div class="card__content">
+								<h6>
+									Поддержка 24/7
+								</h6>
+								<p>
+									Наши специалисты всегда на связи и готовы провести бесплатную консультацию, ответить на любые вопросы.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.why-us -->
+			<section class="about-token about-token-two md:py-28 py-24 relative">
+				<div class="about-token__container">
+					<div class="flex md:flex-row flex-col items-center gap-4">
+						<div class="about-token__text flex-1">
+							<h2 class="dark:text-dark-white text-light-black md:text-3xl text-2xl h2 mb-7">
+								Mansa Trade — зарабатывайте на криптовалюте без ограничений
+							</h2>
+							<div class="text-base dark:text-dark-text-gray text-light-text-gray leading-6">
+								<p>
+									Создали систему, отвечающую всем потребностям владельцев криптовалюты — храните токены, торгуйте активами безопасно и с максимальной выгодой. Платформа полностью децентрализована и работает в популярных блокчейн-сетях, что обеспечивает большую популяризацию внутренних монет. 
+								</p>
+								<ul>
+									<li>Для начала торговли достаточно подключить кошелек.</li>
+									<li>10+ операций с валютой — вывод, купля-продажа, перевод, обмен на наличные и т.д.</li>
+									<li>Более 1 000 транзакций проводится ежедневно.</li>
+									<li>100+ пользователей хранят токены MansaTrade.</li>
+								</ul>
+								<p>
+									Регулярно выпускаем обновления и добавляем полезные функции для наших участников. Над проектом работают квалифицированные программисты и разработчики с опытом более 10 лет. 
+								</p>
+							</div>
+						</div>
+						<div class="about-token__image lg:flex-[0_1_33.75rem] md:flex-1 md:-mr-[10%]">
+							<img src="img/about-token/image-02.png" alt="image">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.about-token -->
+			<section class="faq md:py-28 py-20 relative">
+				<div class="faq__container">
+					<h2 class="dark:text-dark-white text-light-black md:text-3xl text-2xl h2 text-center md:mb-16 mb-12">
+						Все, что вы хотели знать о стейкинге — здесь
+					</h2>
+					<div data-spollers class="max-w-[43.75rem] mx-auto mb-10">
+						<details class="spollers__item">
+							<summary>1. Как начать стейкинг криптовалюты?</summary>
+							<div>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+							</div>
+						</details>
+						<details class="spollers__item">
+							<summary>2. Как получить токен?</summary>
+							<div>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+							</div>
+						</details>
+						<details class="spollers__item">
+							<summary>3. Какие валюты можно стейкать?</summary>
+							<div>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+							</div>
+						</details>
+						<details class="spollers__item">
+							<summary>4. Что если токен не вырастет в цене?</summary>
+							<div>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+								<ul>
+									<li>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci debitis corporis dignissimos non eos architecto quos, quasi, qui provident at corrupti quod ea ex nesciunt! Culpa facere alias at magnam?
+									</li>
+								</ul>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+							</div>
+						</details>
+						<details class="spollers__item">
+							<summary>5. Получится ли вывести накопления раньше срока?</summary>
+							<div>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+								<ul>
+									<li>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci debitis corporis dignissimos non eos architecto quos, quasi, qui provident at corrupti quod ea ex nesciunt! Culpa facere alias at magnam?
+									</li>
+								</ul>
+								<p>
+									Программу уже проверили более 200 пользователей - подключение всегда было стабильным. При возникновении вопросов наши специалисты быстро найдут решение.
+								</p>
+							</div>
+						</details>
+					</div>
+					<div class="flex justify-center">
+						<a href="#" class="button button-gray sm:min-w-56 min-w-full justify-center" data-ripple>
+							<span class="circle"></span>
+							<span class="button__text">
+								Задать другой вопрос
+							</span>
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- /.faq -->
+			<section class="banner py-20">
+				<div class="banner__container">
+					<div class="banner-block rounded-[1.875rem]">
+						<div class="banner-wrap sm:p-10 py-9 px-4 text-center">
+							<h2 class="dark:text-dark-white text-light-black md:text-[2.5rem] text-2xl h2 text-center mb-6">
+								Присоединяйтесь к экосистеме Mansa Trade и увеличивайте прибыль до х3–5 раз
+							</h2>
+							<p class="dark:text-dark-text-gray text-light-text-gray text-base leading-6 mb-12 text-center mx-auto max-w-[49.375rem]">
+								Зарабатывайте и храните токены MansaTrade, чтобы использовать все возможности платформы и приумножить доход. Стейкинг позволит принимать активное участие в развитии децентрализованной биржи и получить максимум выгоды от торговли. Начните прямо сейчас — заморозьте часть средств в криптокошельке и обеспечьте себе достойный пассивный доход.
+							</p>
+							<a href="#" class="button button-green md:min-w-[11.875rem] min-w-[15rem]" data-goto=".tariffs">
+								Начат стейкать
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- /.banner -->
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20240218161623"></script>
+
+</body>
+
+</html>
